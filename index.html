@@ -61,7 +61,21 @@
       padding: 8rem 2.5rem 4rem;
       max-width: 900px; margin: 0 auto;
     }
-    .hero-inner { width: 100%; }
+    .hero-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+    .hero-photo {
+      flex-shrink: 0;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      box-shadow: 0 0 40px rgba(79,142,247,0.2);
+    }
+    .hero-content { flex: 1; }
     .hero-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
@@ -254,6 +268,9 @@
       nav { padding: 1rem 1.25rem; }
       .nav-links { gap: 1.2rem; }
       .hero { padding: 7rem 1.25rem 3rem; }
+      .hero-inner { flex-direction: column; gap: 2rem; text-align: center; }
+      .hero-photo { width: 130px; height: 130px; }
+      .hero-cta { justify-content: center; }
       section { padding: 3.5rem 1.25rem; }
       .contact-box { padding: 2rem 1.25rem; }
     }
@@ -274,14 +291,17 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
-      <p class="hero-tag">// Data Analyst Jr.</p>
-      <h1>Hola, soy<br><span>Alan Erut</span></h1>
-      <p class="hero-desc">
-        Transformo datos en decisiones. Trabajo con SQL, Python, Power BI y Google BigQuery para construir pipelines, dashboards y análisis que generan valor real.
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">Ver proyectos</a>
-        <a href="#contact" class="btn btn-ghost">Contactame</a>
+      <img class="hero-photo" src="alane.png" alt="Alan Erut"/>
+      <div class="hero-content">
+        <p class="hero-tag">// Data Analyst Jr.</p>
+        <h1>Hola, soy<br><span>Alan Erut</span></h1>
+        <p class="hero-desc">
+          Transformo datos en decisiones. Trabajo con SQL, Python, Power BI y Google BigQuery para construir pipelines, dashboards y análisis que generan valor real.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+          <a href="#contact" class="btn btn-ghost">Contactame</a>
+        </div>
       </div>
     </div>
   </div>
