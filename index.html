@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alan Erut — Data Analyst Jr.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0f14;
+      --surface:   #13161e;
+      --border:    #1e2330;
+      --accent:    #4f8ef7;
+      --accent2:   #7c3aed;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --tag-bg:    #1a1f2e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2.5rem;
+      background: rgba(13,15,20,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 2.5rem 4rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .hero-inner { width: 100%; }
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+    }
+    .btn-primary:hover { background: #3b7ef6; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* SECTIONS */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .skill-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .skill-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .skill-level {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .project-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .project-icon { font-size: 1.4rem; }
+    .project-link-icon { color: var(--muted); font-size: 0.9rem; }
+    .project-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+    .project-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+    }
+    .contact-box h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-links {
+      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { padding: 7rem 1.25rem 3rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .contact-box { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">alan.erut</span>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-tag">// Data Analyst Jr.</p>
+      <h1>Hola, soy<br><span>Alan Erut</span></h1>
+      <p class="hero-desc">
+        Transformo datos en decisiones. Trabajo con SQL, Python, Power BI y Google BigQuery para construir pipelines, dashboards y análisis que generan valor real.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+        <a href="#contact" class="btn btn-ghost">Contactame</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">// stack</p>
+    <h2 class="section-title">Herramientas que uso</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">SQL</div>
+        <div class="skill-level">Intermedio</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python</div>
+        <div class="skill-level">Básico — En progreso</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Power BI</div>
+        <div class="skill-level">Básico</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Google BigQuery</div>
+        <div class="skill-level">Básico</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐼</div>
+        <div class="skill-name">Pandas</div>
+        <div class="skill-level">En progreso</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📁</div>
+        <div class="skill-name">ETL</div>
+        <div class="skill-level">Proyectos propios</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">// portfolio</p>
+    <h2 class="section-title">Proyectos</h2>
+    <div class="projects-grid">
+
+      <a class="project-card" href="https://github.com/alanerut94/analisis_de_ventas" target="_blank">
+        <div class="project-header">
+          <span class="project-icon">📈</span>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-title">Análisis de Ventas — Pipeline Completo</div>
+        <div class="project-desc">Pipeline end-to-end: ETL con Python, carga en BigQuery, consultas SQL y dashboard interactivo en Power BI con métricas de ventas.</div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Power BI</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/alanerut94/analisis-de-facturas" target="_blank">
+        <div class="project-header">
+          <span class="project-icon">🧾</span>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-title">Análisis de Facturas</div>
+        <div class="project-desc">Análisis de facturación por cliente con visualizaciones interactivas en Power BI: facturas por sector, concepto y provincia.</div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">ETL</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/alanerut94/M-libre" target="_blank">
+        <div class="project-header">
+          <span class="project-icon">🛒</span>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-title">ETL — MySQL</div>
+        <div class="project-desc">Proceso ETL para cargar datos de ventas desde CSV a MySQL. Extracción de productos más vendidos y visualizaciones gráficas.</div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">ETL</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/alanerut94/sql-query" target="_blank">
+        <div class="project-header">
+          <span class="project-icon">🗃️</span>
+          <span class="project-link-icon">↗</span>
+        </div>
+        <div class="project-title">SQL Practice — Northwind</div>
+        <div class="project-desc">Consultas SQL sobre la base Northwind: JOINs de múltiples tablas, agregaciones, filtros avanzados y columnas calculadas.</div>
+        <div class="project-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Northwind</span>
+          <span class="tag">Análisis</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">// contacto</p>
+    <h2 class="section-title">Hablemos</h2>
+    <div class="contact-box">
+      <h3>¿Tenés un proyecto o una oportunidad?</h3>
+      <p>Estoy buscando mi primera oportunidad como Data Analyst Jr. y también estoy abierto a proyectos freelance.</p>
+      <div class="contact-links">
+        <a href="mailto:aalanerut@gmail.com" class="btn btn-primary">✉️ aalanerut@gmail.com</a>
+        <a href="https://github.com/alanerut94" target="_blank" class="btn btn-ghost">GitHub</a>
+        <a href="https://www.linkedin.com/in/alanerut/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Alan Erut — Data Analyst Jr. · Construido con HTML & CSS
+  </footer>
+
+</body>
+</html>
