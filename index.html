@@ -111,6 +111,13 @@
   .project-card:hover { border-color: var(--accent); }
   .project-card .title { font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
   .project-card .desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 14px; }
+  .shots { display: flex; gap: 8px; margin-bottom: 14px; }
+  .shots img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: block;
+  }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag {
     background: rgba(79,140,255,0.12);
@@ -196,16 +203,23 @@
       <div class="tags"><span class="tag">Python</span><span class="tag">BigQuery</span><span class="tag">ETL</span></div>
     </a>
 
-    <a class="project-card" href="https://github.com/alanerut94/analisis_de_ventas" target="_blank" rel="noopener">
+    <a class="project-card" href="https://github.com/alanerut94/analisis-de-ventas" target="_blank" rel="noopener">
       <div class="title">📈 Análisis de Ventas — Pipeline Completo</div>
+      <div class="shots">
+        <img src="img/ventas-dashboard-1.png" alt="Dashboard de ventas: total facturado, top productos, ventas por región">
+      </div>
       <div class="desc">Pipeline end-to-end: ETL con Python, carga en BigQuery, consultas SQL y dashboard interactivo en Power BI con métricas de ventas.</div>
       <div class="tags"><span class="tag">Python</span><span class="tag">BigQuery</span><span class="tag">SQL</span><span class="tag">Power BI</span></div>
     </a>
 
-    <a class="project-card" href="https://github.com/alanerut94/analisis-de-facturas" target="_blank" rel="noopener">
-      <div class="title">🧾 Análisis de Facturas</div>
-      <div class="desc">Análisis de facturación por cliente con visualizaciones interactivas en Power BI: facturas por sector, concepto y provincia.</div>
-      <div class="tags"><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">ETL</span></div>
+    <a class="project-card" href="https://github.com/alanerut94/facturacion" target="_blank" rel="noopener">
+      <div class="title">🧾 Análisis de Facturación</div>
+      <div class="shots">
+        <img src="img/facturacion-dashboard.png" alt="Dashboard de facturación por sector, concepto y provincia">
+        <img src="img/facturacion-dashboard-2.png" alt="Dashboard de facturación por productos, mes y rentabilidad por cliente">
+      </div>
+      <div class="desc">Análisis de facturación por cliente en Power BI: facturas por sector, concepto, provincia, productos y rentabilidad.</div>
+      <div class="tags"><span class="tag">Power BI</span><span class="tag">ETL</span></div>
     </a>
 
     <a class="project-card" href="https://github.com/alanerut94/M-libre" target="_blank" rel="noopener">
@@ -220,9 +234,6 @@
       <div class="tags"><span class="tag">SQL</span><span class="tag">Northwind</span><span class="tag">Análisis</span></div>
     </a>
 
-  </div>
-  <div class="note">
-    ⚠️ Tenés 7 repos en GitHub y acá solo hay 5. Si el sexto/séptimo son proyectos relevantes (no pruebas ni borradores), agregales su propia tarjeta con el mismo formato. Si son repos de práctica sin terminar, mejor marcalos como privados en GitHub para no diluir la percepción de calidad del perfil.
   </div>
 </section>
 
@@ -241,7 +252,7 @@
 </section>
 
 <footer>
-  © 2026 Alan Erut — Data Analyst Jr. · Construido con HTML &amp; CSS
+  © 2026 Alan Erut — Data Analyst Jr.
 </footer>
 
 </body>
